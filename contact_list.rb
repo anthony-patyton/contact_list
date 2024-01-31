@@ -1,4 +1,4 @@
-@contact = {}
+@contact = {"anthony": '123-123-1234', }
 
 def display_contact()
   puts "Name\t\tContact Number"
@@ -18,10 +18,18 @@ while true
     first_name = gets.strip
     puts "phone number"
     phone_num = gets.strip
+    #this is where one would check if the user information is a str and place the value into @contact
     @contact[first_name] = phone_num
-    #display the contact they created
   elsif choice == 2
-    puts choice
+    puts "Please type their first name"
+    search_name = gets.strip
+    puts "Searching contact for '#{search_name}'" + '.' * 50
+    if @contact.has_key?(search_name.to_s) 
+      #want contact to print the key value pair of search name
+      p "#{search_name} contact number is #{@contact[search_name]}"
+    else
+      puts "Nothing came up"
+    end
   elsif choice == 3
     display_contact()
   elsif choice == 4
