@@ -1,4 +1,4 @@
-@contact = {"anthony": '123-123-1234', }
+@contact = {}
 
 def display_contact()
   puts "Name\t\tContact Number"
@@ -25,7 +25,6 @@ while true
     search_name = gets.strip
     puts "Searching contact for '#{search_name}'" + '.' * 50
     if @contact.has_key?(search_name.to_s) 
-      #want contact to print the key value pair of search name
       p "#{search_name} contact number is #{@contact[search_name]}"
     else
       puts "Nothing came up"
@@ -33,7 +32,15 @@ while true
   elsif choice == 3
     display_contact()
   elsif choice == 4
-    puts choice
+    puts "Enter contact name to be edited"
+    edit_contact_name = gets.strip
+    if (@contact.has_key?(edit_contact_name.to_s))
+      puts "Enter contact number:"
+      edit_contact_phone = gets.strip
+      @contact[edit_contact_name] = edit_contact_phone
+    else
+      puts "Contact name does not exist"
+    end
   elsif choice == 5
     puts choice
   elsif choice == 6
