@@ -39,10 +39,17 @@ while true
       edit_contact_phone = gets.strip
       @contact[edit_contact_name] = edit_contact_phone
     else
-      puts "Contact name does not exist"
+      puts "Contact #{edit_contact_name} does not exist"
     end
   elsif choice == 5
-    puts choice
+    puts "Enter contact name to be deleted:"
+    delete_contact_name = gets.strip
+    if (@contact.has_key?(delete_contact_name))
+      @contact.delete(delete_contact_name)
+      puts "#{delete_contact_name}'s is being deleted..." 
+    else
+      puts "Contact does not exist"
+    end
   elsif choice == 6
     puts "Quitting Application" + "." * 100
     return
