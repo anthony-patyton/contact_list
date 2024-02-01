@@ -1,3 +1,5 @@
+require 'colorize'
+
 @contact = {}
 
 def display_contact()
@@ -8,11 +10,11 @@ def display_contact()
 end
 
 while true
-  puts "-" * 100
-  puts " 1. Add new contact\n 2. Search new Contact\n 3. Display contacts\n 4. Edit Contacts\n 5. Delete Contacts\n 6. Exit\n"
+  puts ("-" * 100).colorize(:light_blue)
+  puts " 1. Add new contact\n 2. Search new Contact\n 3. Display contacts\n 4. Edit Contacts\n 5. Delete Contacts\n 6. Exit\n".colorize(:green)
   puts "Enter your choice"
   choice = gets.chomp.to_i 
-  puts "-" * 100 #cleaner code terminal
+  puts ("-" * 100).colorize(:light_blue) #cleaner code terminal
   if choice == 1
     puts "Enter Name"
     first_name = gets.strip
@@ -25,7 +27,7 @@ while true
     search_name = gets.strip
     puts "Searching contact for '#{search_name}'" + '.' * 50
     if @contact.has_key?(search_name.to_s) 
-      p "#{search_name} contact number is #{@contact[search_name]}"
+      p "#{search_name}'s contact number is #{@contact[search_name]}"
     else
       puts "Nothing came up"
     end
@@ -46,7 +48,7 @@ while true
     delete_contact_name = gets.strip
     if (@contact.has_key?(delete_contact_name))
       @contact.delete(delete_contact_name)
-      puts "#{delete_contact_name}'s is being deleted..." 
+      puts "#{delete_contact_name}'s contact is being deleted..." 
     else
       puts "Contact does not exist"
     end
@@ -54,8 +56,9 @@ while true
     puts "Quitting Application" + "." * 100
     return
   else
-    puts "-" * 100
+    puts ("-" * 100).colorize(:light_blue)
     puts "Wrong input, please type 1, 2, 3, 4, 5, or 6"
-    puts "-" * 100
   end
 end
+
+#touch Gemfile && gitignore -> bundle
